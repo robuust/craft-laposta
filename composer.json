@@ -20,7 +20,8 @@
     },
     "require": {
         "php": "^7.0|^8.0",
-        "craftcms/cms": "^3.0"
+        "craftcms/cms": "^3.0",
+        "laposta/laposta-api-php": "^1.5"
     },
     "autoload": {
         "psr-4": {
