@@ -34,3 +34,29 @@ return [
 ];
 
 ```
+
+## Usage
+
+Create a new "LaPosta" field and add it to the desired element's field layout.
+Now when editing such element you can select a LaPosta list to use.
+
+In your front-end templates you can render this LaPosta list as a form.
+
+## Example
+
+Here is an example that renders a LaPosta form. You can change and style this example any way you want.
+
+```twig
+  {% if errors %}
+    <p>{{ errors.message }}</p>
+  {% endif %}
+  <form method="post">
+    {{ csrfInput() }}
+    {{ actionInput('laposta/submit') }}
+    {% for field in entry.form %}
+      <input id="{{ field.id }}" name="{{ field.name }}" type="{{ field.type }}" placeholder="{{ field.label }}"{% if field.required %} required{% endif %} value="{{ field.value }}" />
+      <br />
+    {% endfor %}
+    <input type="submit" />
+  </form>
+```
