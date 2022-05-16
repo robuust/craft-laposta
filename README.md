@@ -47,12 +47,13 @@ In your front-end templates you can render this LaPosta list as a form.
 Here is an example that renders a LaPosta form. You can change and style this example any way you want.
 
 ```twig
-  {% if errors %}
+  {% if errors is defined %}
     <p>{{ errors.message }}</p>
   {% endif %}
   <form method="post">
     {{ csrfInput() }}
     {{ actionInput('laposta/submit') }}
+    {{ redirectInput('url_to_redirect_to') }}
     {% for field in entry.form %}
       <input id="{{ field.id }}" name="{{ field.name }}" type="{{ field.type }}" placeholder="{{ field.label }}"{% if field.required %} required{% endif %} value="{{ field.value }}" />
       <br />
