@@ -30,7 +30,7 @@ Create a file called `laposta.php` in you Craft config folder with the following
 
 return [
     // General
-    'apiKey' => 9999, // YOUR API KEY
+    'apiKey' => 'YOUR_API_KEY',
 ];
 
 ```
