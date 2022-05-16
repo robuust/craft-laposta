@@ -48,7 +48,7 @@ Here is an example that renders a LaPosta form. You can change and style this ex
 
 ```twig
   {% if errors is defined %}
-    <p>{{ errors.message }}</p>
+    <p>{{ errors.message|t }}</p>
   {% endif %}
   <form method="post">
     {{ csrfInput() }}
