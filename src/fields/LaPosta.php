@@ -35,15 +35,18 @@ class LaPosta extends Dropdown
         parent::init();
 
         // Get all lists
-        $list = new Laposta_List();
-        $results = $list->all();
+        try {
+            $list = new Laposta_List();
+            $results = $list->all();
 
-        // Set as dropdown options
-        foreach ($results['data'] as $result) {
-            $this->options[] = [
-                'value' => $result['list']['list_id'],
-                'label' => $result['list']['name'],
-            ];
+            // Set as dropdown options
+            foreach ($results['data'] as $result) {
+                $this->options[] = [
+                    'value' => $result['list']['list_id'],
+                    'label' => $result['list']['name'],
+                ];
+            }
+        } catch (\Exception) {
         }
     }
 
@@ -55,32 +58,36 @@ class LaPosta extends Dropdown
         // Get list id
         $list = (string) parent::normalizeValue($value, $element);
 
-        // Get all fields from list
-        $field = new Laposta_Field($list);
-        $results = $field->all();
+        try {
+            // Get all fields from list
+            $field = new Laposta_Field($list);
+            $results = $field->all();
 
-        // Add hidden list id field
-        $fields = [
-            [
-                'id' => $list,
-                'name' => 'list_id',
-                'label' => Craft::t('site', 'List'),
-                'type' => 'hidden',
-                'required' => true,
-                'value' => $list,
-            ],
-        ];
-
-        // Add list fields
-        foreach ($results['data'] as $result) {
-            $fields[] = [
-                'id' => $result['field']['field_id'],
-                'name' => trim($result['field']['tag'], '{}'),
-                'label' => $result['field']['name'],
-                'type' => $result['field']['is_email'] ? 'email' : $result['field']['datatype'],
-                'required' => $result['field']['required'],
-                'value' => $result['field']['defaultvalue'],
+            // Add hidden list id field
+            $fields = [
+                [
+                    'id' => $list,
+                    'name' => 'list_id',
+                    'label' => Craft::t('site', 'List'),
+                    'type' => 'hidden',
+                    'required' => true,
+                    'value' => $list,
+                ],
             ];
+
+            // Add list fields
+            foreach ($results['data'] as $result) {
+                $fields[] = [
+                    'id' => $result['field']['field_id'],
+                    'name' => trim($result['field']['tag'], '{}'),
+                    'label' => $result['field']['name'],
+                    'type' => $result['field']['is_email'] ? 'email' : $result['field']['datatype'],
+                    'required' => $result['field']['required'],
+                    'value' => $result['field']['defaultvalue'],
+                ];
+            }
+        } catch (\Exception) {
+            $fields = [];
         }
 
         return $fields;
@@ -91,7 +98,7 @@ class LaPosta extends Dropdown
      */
     public function serializeValue($value, ElementInterface $element = null)
     {
-        if (is_array($value)) {
+        if (is_array($value) && count($value)) {
             $value = $value[0]['value'];
         }
 
@@ -118,7 +125,7 @@ class LaPosta extends Dropdown
             'id' => $this->getInputId(),
             'describedBy' => $this->describedBy,
             'name' => $this->handle,
-            'value' => $value[0]['value'],
+            'value' => $value[0]['value'] ?? null,
             'options' => $options,
         ]);
     }
