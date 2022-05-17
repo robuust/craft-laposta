@@ -55,7 +55,14 @@ Here is an example that renders a Laposta form. You can change and style this ex
     {{ actionInput('laposta/submit') }}
     {{ redirectInput('url_to_redirect_to') }}
     {% for field in entry.form %}
-      <input id="{{ field.id }}" name="{{ field.name }}" type="{{ field.type }}" placeholder="{{ field.label }}"{% if field.required %} required{% endif %} value="{{ field.value }}" />
+      {% switch field.type %}
+        {% case 'radio' or 'checkbox' %}
+          {% for option in field.options %}
+            <input id="{{ field.id }}-{{ loop.index }}" name="{{ field.name }}{% if field.type == 'checkbox' %}[]{% endif %}" type="{{ field.type }}" {% if field.required %} required{% endif %} value="{{ option }}" /> <label for="{{ field.id }}-{{ loop.index }}">{{ option }}</label>
+          {% endfor %}
+        {% default %}
+          <input id="{{ field.id }}" name="{{ field.name }}" type="{{ field.type }}" placeholder="{{ field.label }}"{% if field.required %} required{% endif %} value="{{ field.value }}" />
+      {% endswitch %}
       <br />
     {% endfor %}
     <input type="submit" />

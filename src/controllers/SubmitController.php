@@ -12,7 +12,10 @@ use Laposta_Member;
  */
 class SubmitController extends Controller
 {
-    public $allowAnonymous = true;
+    /**
+     * {@inheritdoc}
+     */
+    protected array|bool|int $allowAnonymous = true;
 
     /**
      * Submit form to Laposta.
@@ -53,6 +56,6 @@ class SubmitController extends Controller
             return null;
         }
 
-        return $this->redirectToPostedUrl($result);
+        return $this->redirectToPostedUrl((object) $result);
     }
 }

@@ -1,3 +1,11 @@
+## 2.0.1 - 2022-05-17
+
+### Added
+- Added support for more input types
+
+### Fixed
+- Fixed submit controller interface
+
 ## 2.0.0 - 2022-05-17
 
 ### Added
