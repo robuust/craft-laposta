@@ -1,3 +1,8 @@
+## 2.0.0 - 2022-05-17
+
+### Added
+- Added Craft 4 support
+
 ## 1.0.3 - 2022-05-17
 
 ### Changed
