@@ -19,7 +19,7 @@ To install the plugin, follow these instructions.
 
         composer require robuust/craft-laposta
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Client Online.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Laposta.
 
 ## Config
 
