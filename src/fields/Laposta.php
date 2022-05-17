@@ -72,6 +72,7 @@ class Laposta extends Dropdown
                     'type' => 'hidden',
                     'required' => true,
                     'value' => $list,
+                    'options' => [],
                 ],
             ];
 
@@ -81,9 +82,10 @@ class Laposta extends Dropdown
                     'id' => $result['field']['field_id'],
                     'name' => trim($result['field']['tag'], '{}'),
                     'label' => $result['field']['name'],
-                    'type' => $result['field']['is_email'] ? 'email' : $result['field']['datatype'],
+                    'type' => $this->getType($result['field']),
                     'required' => $result['field']['required'],
                     'value' => $result['field']['defaultvalue'],
+                    'options' => $result['field']['options'] ?? [],
                 ];
             }
         } catch (\Exception) {
@@ -144,5 +146,30 @@ class Laposta extends Dropdown
     public function getSettingsHtml()
     {
         return null;
+    }
+
+    /**
+     * Get type.
+     *
+     * @param array $field
+     *
+     * @return string
+     */
+    private function getType(array $field): string
+    {
+        if ($field['is_email']) {
+            return 'email';
+        }
+
+        switch ($field['datatype']) {
+            case 'numeric':
+                return 'number';
+            case 'select_single':
+                return 'radio';
+            case 'select_multiple':
+                return 'checkbox';
+            default:
+                return $field['datatype'];
+        }
     }
 }

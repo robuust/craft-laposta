@@ -1,5 +1,5 @@
 {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "robuust/craft-laposta",
     "description": "Laposta forms for Craft 3",
     "type": "craft-plugin",
@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.0",
-        "craftcms/cms": "^3.0",
+        "craftcms/cms": "^3.1",
         "laposta/laposta-api-php": "^1.5"
     },
     "autoload": {

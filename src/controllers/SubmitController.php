@@ -53,6 +53,6 @@ class SubmitController extends Controller
             return null;
         }
 
-        return $this->redirectToPostedUrl($result);
+        return $this->redirectToPostedUrl((object) $result);
     }
 }

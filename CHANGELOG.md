@@ -1,3 +1,8 @@
+## 1.0.4 - 2022-05-17
+
+### Added
+- Added support for more input types
+
 ## 1.0.3 - 2022-05-17
 
 ### Changed
