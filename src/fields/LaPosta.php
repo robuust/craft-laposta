@@ -133,6 +133,14 @@ class LaPosta extends Dropdown
     /**
      * {@inheritdoc}
      */
+    public function getSettings(): array
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getSettingsHtml()
     {
         return null;
