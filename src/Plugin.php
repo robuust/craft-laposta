@@ -5,12 +5,12 @@ namespace robuust\laposta;
 use craft\events\RegisterComponentTypesEvent;
 use craft\services\Fields;
 use Laposta;
-use robuust\laposta\fields\LaPosta as LaPostaField;
+use robuust\laposta\fields\Laposta as LapostaField;
 use robuust\laposta\models\Settings;
 use yii\base\Event;
 
 /**
- * LaPosta plugin.
+ * Laposta plugin.
  */
 class Plugin extends \craft\base\Plugin
 {
@@ -26,7 +26,7 @@ class Plugin extends \craft\base\Plugin
 
         // Register fieldtype
         Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function (RegisterComponentTypesEvent $event) {
-            $event->types[] = LaPostaField::class;
+            $event->types[] = LapostaField::class;
         });
     }
 

@@ -1,7 +1,7 @@
 {
     "version": "1.0.2",
     "name": "robuust/craft-laposta",
-    "description": "LaPosta forms for Craft 3",
+    "description": "Laposta forms for Craft 3",
     "type": "craft-plugin",
     "license": "MIT",
     "authors": [
@@ -12,7 +12,7 @@
     ],
     "extra": {
         "handle": "laposta",
-        "name": "LaPosta",
+        "name": "Laposta",
         "developer": "Robuust",
         "developerUrl": "https://robuust.digital",
         "hasCpSettings": false,

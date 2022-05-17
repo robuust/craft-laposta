@@ -9,7 +9,7 @@ use Laposta_Field;
 use Laposta_List;
 
 /**
- * LaPosta Field.
+ * Laposta Field.
  *
  * @author    Bob Olde Hampsink <bob@robuust.digital>
  * @copyright Copyright (c) 2022, Robuust
@@ -17,14 +17,14 @@ use Laposta_List;
  *
  * @see       https://robuust.digital
  */
-class LaPosta extends Dropdown
+class Laposta extends Dropdown
 {
     /**
      * {@inheritdoc}
      */
     public static function displayName(): string
     {
-        return Craft::t('app', 'LaPosta');
+        return Craft::t('app', 'Laposta');
     }
 
     /**

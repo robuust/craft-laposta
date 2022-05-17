@@ -15,7 +15,7 @@ class SubmitController extends Controller
     public $allowAnonymous = true;
 
     /**
-     * Submit form to LaPosta.
+     * Submit form to Laposta.
      *
      * @return Response|null
      */

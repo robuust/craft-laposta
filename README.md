@@ -1,7 +1,7 @@
-LaPosta plugin for Craft
+Laposta plugin for Craft
 =================
 
-Plugin that allows you to display LaPosta forms
+Plugin that allows you to display Laposta forms
 
 ## Requirements
 
@@ -37,14 +37,14 @@ return [
 
 ## Usage
 
-Create a new "LaPosta" field and add it to the desired element's field layout.
-Now when editing such element you can select a LaPosta list to use.
+Create a new "Laposta" field and add it to the desired element's field layout.
+Now when editing such element you can select a Laposta list to use.
 
-In your front-end templates you can render this LaPosta list as a form.
+In your front-end templates you can render this Laposta list as a form.
 
 ## Example
 
-Here is an example that renders a LaPosta form. You can change and style this example any way you want.
+Here is an example that renders a Laposta form. You can change and style this example any way you want.
 
 ```twig
   {% if errors is defined %}
