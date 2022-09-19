@@ -1,3 +1,8 @@
+## 1.0.5 - 2022-09-19
+
+### Changed
+- Cache initial Laposta list fetching
+
 ## 1.0.4 - 2022-05-17
 
 ### Added
