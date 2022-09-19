@@ -35,18 +35,24 @@ class Laposta extends Dropdown
         parent::init();
 
         // Get all lists
-        try {
-            $list = new Laposta_List();
-            $results = $list->all();
+        $results = Craft::$app->getCache()->get('laposta');
+        if ($results === false) {
+            try {
+                $list = new Laposta_List();
+                $results = $list->all();
 
-            // Set as dropdown options
-            foreach ($results['data'] as $result) {
-                $this->options[] = [
-                    'value' => $result['list']['list_id'],
-                    'label' => $result['list']['name'],
-                ];
+                Craft::$app->getCache()->set('laposta', $results);
+            } catch (\Exception) {
+                $results = [];
             }
-        } catch (\Exception) {
+        }
+
+        // Set as dropdown options
+        foreach ($results['data'] as $result) {
+            $this->options[] = [
+                'value' => $result['list']['list_id'],
+                'label' => $result['list']['name'],
+            ];
         }
     }
 
