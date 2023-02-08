@@ -43,7 +43,7 @@ class Laposta extends Dropdown
 
                 Craft::$app->getCache()->set('laposta', $results);
             } catch (\Exception) {
-                $results = [];
+                $results = ['data' => []];
             }
         }
 

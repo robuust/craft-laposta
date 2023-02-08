@@ -1,3 +1,8 @@
+## 2.0.3 - 2023-02-08
+
+### Fixed
+- Fixed initialing plugin without lists
+
 ## 2.0.2 - 2022-09-19
 
 ### Changed
