@@ -79,6 +79,7 @@ class Laposta extends Dropdown
                     'required' => true,
                     'value' => $list,
                     'options' => [],
+                    'inform' => 'true',
                 ],
             ];
 
@@ -92,6 +93,7 @@ class Laposta extends Dropdown
                     'required' => $result['field']['required'],
                     'value' => $result['field']['defaultvalue'],
                     'options' => $result['field']['options'] ?? [],
+                    'inform' => $result['field']['in_form'],
                 ];
             }
         } catch (\Exception) {
