@@ -1,4 +1,5 @@
 ## 2.0.4 - 2023-08-01
+
 ### Added
 - Add filter for fields to be rendered
 
