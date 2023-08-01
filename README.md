@@ -54,7 +54,7 @@ Here is an example that renders a Laposta form. You can change and style this ex
     {{ csrfInput() }}
     {{ actionInput('laposta/submit') }}
     {{ redirectInput('url_to_redirect_to') }}
-    {% for field in entry.form %}
+    {% for field in entry.form|filter(field => field.inform == "true") %}
       {% switch field.type %}
         {% case 'radio' or 'checkbox' %}
           {% for option in field.options %}
