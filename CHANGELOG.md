@@ -1,3 +1,8 @@
+## 1.0.7 - 2023-08-01
+
+### Added
+- Add filter for fields to be rendered
+
 ## 1.0.6 - 2023-02-08
 
 ### Fixed
