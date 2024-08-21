@@ -30,7 +30,7 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -59,7 +59,7 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue($value, ElementInterface $element = null): mixed
     {
         // Get list id
         $list = (string) parent::normalizeValue($value, $element);
@@ -106,7 +106,7 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue($value, ElementInterface $element = null): mixed
     {
         if (is_array($value) && count($value)) {
             $value = $value[0]['value'];
@@ -151,7 +151,7 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         return null;
     }
