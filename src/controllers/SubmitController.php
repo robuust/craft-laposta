@@ -56,6 +56,10 @@ class SubmitController extends Controller
             return null;
         }
 
+        if ($this->request->getAcceptsJson()) {
+            return $this->asJson($result);
+        }
+
         return $this->redirectToPostedUrl((object) $result);
     }
 }

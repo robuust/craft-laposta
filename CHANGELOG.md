@@ -1,3 +1,8 @@
+## 2.0.5 - 2024-08-29
+
+### Added
+- Return result as JSON when submitting form via AJAX
+
 ## 2.0.4 - 2023-08-01
 
 ### Added
