@@ -1,7 +1,7 @@
 {
-    "version": "2.0.4",
+    "version": "3.0.0",
     "name": "robuust/craft-laposta",
-    "description": "Laposta forms for Craft 4",
+    "description": "Laposta forms for Craft 5",
     "type": "craft-plugin",
     "license": "MIT",
     "authors": [
@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.0",
-        "craftcms/cms": "^4.0",
+        "craftcms/cms": "^5.0",
         "laposta/laposta-api-php": "^1.5"
     },
     "autoload": {

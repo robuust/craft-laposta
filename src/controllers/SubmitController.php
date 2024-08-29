@@ -5,6 +5,7 @@ namespace robuust\laposta\controllers;
 use Craft;
 use craft\web\Controller;
 use craft\web\Response;
+use Laposta_Error;
 use Laposta_Member;
 
 /**
@@ -37,8 +38,8 @@ class SubmitController extends Controller
                 'source_url' => $this->request->getReferrer(),
                 'custom_fields' => $values,
             ]);
-        } catch (\Exception $e) {
-            $errors = $e->json_body['error'];
+        } catch (Laposta_Error $e) {
+            $errors = $e->getJsonBody()['error'];
         }
 
         if ($errors) {

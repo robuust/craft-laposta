@@ -1,3 +1,8 @@
+## 2.0.5 - 2024-08-21
+
+### Added
+- Added support for Craft 5
+
 ## 2.0.4 - 2023-08-01
 
 ### Added
