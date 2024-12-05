@@ -66,8 +66,13 @@ class Laposta extends Dropdown
 
         try {
             // Get all fields from list
-            $field = new Laposta_Field($list);
-            $results = $field->all();
+            $results = Craft::$app->getCache()->get('laposta:'.$list);
+            if ($results === false) {
+                $field = new Laposta_Field($list);
+                $results = $field->all();
+
+                Craft::$app->getCache()->set('laposta:'.$list, $results);
+            }
 
             // Add hidden list id field
             $fields = [
