@@ -1,3 +1,8 @@
+## 3.0.3 - 2025-03-10
+
+### Fixed
+- Fixed isValueEmpty method
+
 ## 3.0.2 - 2024-12-05
 
 ### Changed
