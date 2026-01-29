@@ -3,7 +3,9 @@
 namespace robuust\laposta\fields;
 
 use Craft;
+use craft\base\Element;
 use craft\base\ElementInterface;
+use craft\base\Field;
 use craft\fields\Dropdown;
 use Laposta_Field;
 use Laposta_List;
@@ -59,7 +61,27 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function normalizeValue($value, ElementInterface $element = null): mixed
+    public function getStatus(ElementInterface $element): ?array
+    {
+        // If the value is invalid and has a default value (which is going to be pulled in via inputHtml()),
+        // preemptively mark the field as modified
+        /** @var SingleOptionFieldData $value */
+        $value = $element->getFieldValue($this->handle);
+
+        if (!isset($value[0]) || !$value[0]['valid'] && $this->defaultValue() !== null) {
+            return [
+                Element::ATTR_STATUS_MODIFIED,
+                Craft::t('app', 'This field has been modified.'),
+            ];
+        }
+
+        return Field::getStatus($element);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function normalizeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         // Get list id
         $list = (string) parent::normalizeValue($value, $element);
@@ -83,6 +105,7 @@ class Laposta extends Dropdown
                     'type' => 'hidden',
                     'required' => true,
                     'value' => $list,
+                    'valid' => true,
                     'options' => [],
                     'inform' => 'true',
                 ],
@@ -111,7 +134,7 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    public function serializeValue($value, ElementInterface $element = null): mixed
+    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         if (is_array($value) && count($value)) {
             $value = $value[0]['value'];
@@ -131,7 +154,15 @@ class Laposta extends Dropdown
     /**
      * {@inheritdoc}
      */
-    protected function inputHtml($value, ElementInterface $element = null): string
+    public function isValueEmpty(mixed $value, ElementInterface $element): bool
+    {
+        return count($value) === 0;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function inputHtml(mixed $value, ?ElementInterface $element = null): string
     {
         /** @var SingleOptionFieldData $value */
         $options = $this->translatedOptions();
