@@ -2,6 +2,7 @@
 
 ### Fixed
 - Fixed isValueEmpty method
+- Fixed saving field settings
 
 ## 2.0.6 - 2024-12-05
 

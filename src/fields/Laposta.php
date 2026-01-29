@@ -9,6 +9,7 @@ use craft\base\Field;
 use craft\fields\Dropdown;
 use Laposta_Field;
 use Laposta_List;
+use yii\db\Schema;
 
 /**
  * Laposta Field.
@@ -21,6 +22,11 @@ use Laposta_List;
  */
 class Laposta extends Dropdown
 {
+    /**
+     * {@inheritdoc}
+     */
+    public ?string $columnType = Schema::TYPE_STRING;
+
     /**
      * {@inheritdoc}
      */
@@ -56,6 +62,14 @@ class Laposta extends Dropdown
                 'label' => $result['list']['name'],
             ];
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function defineRules(): array
+    {
+        return Field::defineRules();
     }
 
     /**
